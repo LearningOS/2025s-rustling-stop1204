@@ -3,9 +3,8 @@
 	This problem requires you to implement a basic interface for a binary tree
 */
 
-//I AM NOT DONE
 use std::cmp::Ordering;
-use std::fmt::Debug;
+use std::fmt::{Debug, Display};
 
 
 #[derive(Debug)]
@@ -41,7 +40,7 @@ where
 
 impl<T> BinarySearchTree<T>
 where
-    T: Ord,
+    T: Ord + Display+Debug,
 {
 
     fn new() -> Self {
@@ -50,13 +49,28 @@ where
 
     // Insert a value into the BST
     fn insert(&mut self, value: T) {
-        //TODO
+       match self.root {
+           Some(ref mut node) => {
+               node.insert(value);
+           }
+           None => {
+               self.root = Some(Box::new(TreeNode::new(value)));
+           }
+       }
     }
 
     // Search for a value in the BST
     fn search(&self, value: T) -> bool {
-        //TODO
-        true
+        match self.root {
+            Some(ref node) => {
+                return node.search(value);
+
+            }
+            None => {
+                return false;
+            }
+        }
+
     }
 }
 
@@ -64,9 +78,62 @@ impl<T> TreeNode<T>
 where
     T: Ord,
 {
+
+    fn search(&self, value: T) -> bool {
+        match self.value.cmp(&value) {
+            Ordering::Less => {
+                match self.right {
+                    Some(ref  node) => {
+                       return node.search(value);
+                    }
+                    None => {
+                        return false;
+                    }
+                }
+            }
+            Ordering::Greater => {
+                match self.left {
+                    Some(ref  node) => {
+                       return node.search(value);
+                    }
+                    None => {
+                        return false;
+                    }
+                }
+            }
+            Ordering::Equal => {
+                return true;
+            }
+        }
+        false
+    }
     // Insert a node into the tree
     fn insert(&mut self, value: T) {
-        //TODO
+       match self.value.cmp(&value){
+           Ordering::Less=>{
+               match self.right{
+                   Some(ref mut node)=>{
+                       node.insert(value);
+                   }
+                   None=>{
+                       self.right = Some(Box::new(TreeNode::new(value)));
+                   }
+               }
+           }
+           Ordering::Greater=>{
+                match self.left{
+                     Some(ref mut node)=>{
+                          node.insert(value);
+                     }
+                     None=>{
+                          self.left = Some(Box::new(TreeNode::new(value)));
+                     }
+                }
+              }
+           Ordering::Equal=>{
+               return;
+           }
+       }
     }
 }
 

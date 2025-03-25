@@ -2,11 +2,10 @@
 	single linked list merge
 	This problem requires you to merge two ordered singly linked lists into one ordered singly linked list
 */
-// I AM NOT DONE
 
 use std::fmt::{self, Display, Formatter};
+use std::ptr;
 use std::ptr::NonNull;
-use std::vec::*;
 
 #[derive(Debug)]
 struct Node<T> {
@@ -69,14 +68,47 @@ impl<T> LinkedList<T> {
             },
         }
     }
-	pub fn merge(list_a:LinkedList<T>,list_b:LinkedList<T>) -> Self
+	pub fn merge(list_a:LinkedList<T>,list_b:LinkedList<T>) -> Self where  T:Ord
 	{
-		//TODO
-		Self {
-            length: 0,
-            start: None,
-            end: None,
+		let mut new_list = LinkedList::new();
+        let mut node_a = list_a.start;
+        let mut node_b = list_b.start;
+
+        while node_a.is_some() || node_b.is_some() {
+            match (node_a,node_b){
+                (Some(a_ptr),Some(b_ptr)) =>{
+                    let a = unsafe { &(*a_ptr.as_ptr()).val};
+                    let b = unsafe {&(*b_ptr.as_ptr()).val};
+                    if a <= b {
+                        new_list.add(unsafe{ ptr::read(a) });
+                        node_a = unsafe { (*a_ptr.as_ptr()).next};
+
+                    }else{
+                        new_list.add(unsafe{ ptr::read(b) });
+                        node_b = unsafe { (*b_ptr.as_ptr()).next};
+                    }
+                },
+                (Some(a_ptr),None) => {
+                    let a = unsafe { &(*a_ptr.as_ptr()).val};
+
+                    new_list.add(unsafe{(ptr::read(a))});
+                    node_a = unsafe { (*a_ptr.as_ptr()).next};
+
+                },
+                (None,Some(b_ptr)) => {
+                    let b = unsafe { &(*b_ptr.as_ptr()).val};
+
+                    new_list.add(unsafe{ptr::read(b)});
+                    node_b = unsafe { (*b_ptr.as_ptr()).next};
+
+                },
+                _ => break,
+            }
+
         }
+ new_list
+
+
 	}
 }
 
@@ -135,7 +167,7 @@ mod tests {
 		let vec_a = vec![1,3,5,7];
 		let vec_b = vec![2,4,6,8];
 		let target_vec = vec![1,2,3,4,5,6,7,8];
-		
+
 		for i in 0..vec_a.len(){
 			list_a.add(vec_a[i]);
 		}
