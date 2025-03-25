@@ -206,3 +206,61 @@ if you have ideas or suggestions!
 ## Contributors ✨
 
 Thanks goes to the wonderful people listed in [AUTHORS.md](./AUTHORS.md) 🎉
+
+
+# Learning Resources for Algorithms in Rust📚📚📚📚📚📚📚📚📚📚📚📚📚📚📚
+
+Based on the code you've shown, here are resources to learn about the algorithms and data structures implemented:
+
+## 1. Linked Lists and Merge Operations
+
+The `algorithm1.rs` involves merging two sorted linked lists:
+
+- [Learn Rust With Entirely Too Many Linked Lists](https://rust-unofficial.github.io/too-many-lists/) - Comprehensive guide to implementing linked lists in Rust
+- [Rust Algorithm Club - Linked Lists](https://github.com/weihanglo/rust-algorithm-club/tree/master/src/collections/linked_list) - Examples of linked list implementations
+
+## 2. Graph Algorithms (BFS, DFS)
+
+For `algorithm5.rs` (BFS) and `algorithm6.rs` (DFS):
+
+- [Graph Algorithms in Rust](https://www.manning.com/books/rust-in-action) (Chapter in Rust in Action book)
+- [Rust Graph Algorithms on GitHub](https://github.com/sachanganesh/graph-rs) - Various graph algorithm implementations
+- [Visualizing Algorithms](https://visualgo.net/en/dfsbfs) - Visual demonstrations of BFS and DFS
+
+## 3. Stack and Queue
+
+For `algorithm7.rs` (Stack) and `algorithm8.rs` (Queue):
+
+- [Rust Standard Library Documentation - VecDeque](https://doc.rust-lang.org/std/collections/struct.VecDeque.html) - Double-ended queue implementation
+- [Rust Design Patterns - Stack](https://rust-unofficial.github.io/patterns/patterns/creational/builder.html) - Implementation patterns
+
+## 4. Binary Search Tree
+
+For `algorithm4.rs` (BST):
+
+- [Rust Algorithm Club - Binary Search Tree](https://github.com/weihanglo/rust-algorithm-club/blob/master/src/collections/binary_search_tree/README.md)
+- [Binary Trees in Rust](https://rust-unofficial.github.io/too-many-lists/an-ok-tree.html) - From the "Too Many Lists" book
+
+## 5. Binary Heap
+
+For `algorithm9.rs` (Heap):
+
+- [Rust Standard Library - BinaryHeap](https://doc.rust-lang.org/std/collections/struct.BinaryHeap.html)
+- [Rust Algorithm Club - Heap](https://github.com/weihanglo/rust-algorithm-club/blob/master/src/collections/binary_heap/README.md)
+- [Priority Queues with Binary Heaps](https://doc.rust-lang.org/std/collections/binary_heap/index.html) - Rust documentation
+
+## 6. Graphs
+
+For `algorithm10.rs` (Graph):
+
+- [Petgraph Crate Documentation](https://docs.rs/petgraph/latest/petgraph/) - Popular Rust graph library
+- [Graph Theory Algorithms in Rust](https://github.com/nrc/r4cppp/blob/master/graphs/README.md)
+
+## General Algorithm Resources for Rust
+
+- [The Rust Programming Language Book](https://doc.rust-lang.org/book/) - Chapters 13-15 cover iterators and functional programming
+- [Rust Algorithm Club](https://github.com/weihanglo/rust-algorithm-club) - Collection of algorithm implementations in Rust
+- [Programming Rust](https://www.oreilly.com/library/view/programming-rust-2nd/9781492052586/) - Book with excellent chapters on data structures
+- [Exercism's Rust Track](https://exercism.org/tracks/rust) - Practice problems for algorithms in Rust
+
+For implementing efficient merge functions like in your first example, study Rust's standard library implementations for iteration and collection operations, especially the `Iterator` trait's methods.
